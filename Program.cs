@@ -4,13 +4,11 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseDeveloperExceptionPage();
 }
-else
-{
-    // app.UseExceptionHandler("/Error");
+else {
+    app.UseExceptionHandler("/Home/Error");
     app.UseHsts();  // Prevent redirection attacks
 }
 

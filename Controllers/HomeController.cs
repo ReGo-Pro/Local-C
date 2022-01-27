@@ -4,8 +4,11 @@ namespace Local_C.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        {
+        public IActionResult Index() {
+            return View();
+        }
+
+        public IActionResult Error() {
             return View();
         }
     }
