@@ -11,5 +11,9 @@ namespace Local_C.Controllers
         public IActionResult Error() {
             return View();
         }
+
+        public IActionResult Contact() {
+            return View();
+        }
     }
 }
