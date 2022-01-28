@@ -24,8 +24,8 @@ app.UseStaticFiles(new StaticFileOptions {
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
