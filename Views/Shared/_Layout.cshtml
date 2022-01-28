@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="~/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <div>
+    <header>
+        <partial name="_Navbar" />
+    </header>
+    <div class="container">
         @RenderBody()
     </div>
+
+    <script src="~/jquery/dist/jquery.min.js"></script>
 </body>
 </html>
