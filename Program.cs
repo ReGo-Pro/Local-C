@@ -1,8 +1,10 @@
+using Local_C.Core;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IDirectoryAnalyzer, DirectoryAnalizer>();
 
 var app = builder.Build();
 

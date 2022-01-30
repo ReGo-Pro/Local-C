@@ -1,3 +1,20 @@
 ﻿@model Local_C.Models.DownloadDirectoryModel
 
 <h3>Root folder: @Model.RootDir</h3>
+
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Dir</th>
+    </tr>
+    @{
+        int i = 0;
+        foreach(var dir in Model.SubDirectories) {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td><a href="/Downloads/Serve?Dir=@dir">@dir</a></td>
+            </tr>
+        }
+    }
+</table>
