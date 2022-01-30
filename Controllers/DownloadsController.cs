@@ -14,11 +14,10 @@ namespace Local_C.Controllers {
 
 
         public IActionResult Index() {
-            var rootDir = _config.GetSection("RootDir").Value;
             var viewModel = new DownloadDirectoryModel() {
-                RootDir = rootDir,
-                SubDirectories = _direcotryAnalyzer.GetSubDirectories(rootDir),
-                Files = _direcotryAnalyzer.GetFiles(rootDir)
+                RootDir = RootDir,
+                SubDirectories = _direcotryAnalyzer.GetSubDirectories(RootDir),
+                Files = _direcotryAnalyzer.GetFiles(RootDir)
             };
 
             return View(viewModel);
@@ -26,16 +25,18 @@ namespace Local_C.Controllers {
 
         public async Task<IActionResult> Serve(string dir, string file) {
             if (!string.IsNullOrEmpty(file)) {
-                var fileFullName = Path.Combine(_config.GetSection("RootDir").Value, file);
+                var fileFullName = Path.Combine(RootDir, file);
                 if (!System.IO.File.Exists(fileFullName)) {
                     return NotFound();
                 }
 
-                var theFile = await System.IO.File.ReadAllBytesAsync(Path.Combine(_config.GetSection("RootDir").Value, file));
-                return File(theFile, "application/pdf");
+                var fileBytes = await System.IO.File.ReadAllBytesAsync(fileFullName);
+                return File(fileBytes, "application/pdf");
             }
 
             return NotFound();
         }
+
+        private string RootDir => _config.GetSection("RootDir").Value;
     }
 }
