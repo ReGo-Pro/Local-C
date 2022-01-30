@@ -18,3 +18,20 @@
         }
     }
 </table>
+<hr />
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+    </tr>
+    @{
+        int j = 0;
+        foreach(var file in Model.Files) {
+            j++;
+            <tr>
+                <td>@j</td>
+                <td><a href="/Downloads/Serve?File=@file">@file</a></td>
+            </tr>
+        }
+    }
+</table>

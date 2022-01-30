@@ -17,7 +17,8 @@ namespace Local_C.Controllers {
             var rootDir = _config.GetSection("RootDir").Value;
             var viewModel = new DownloadDirectoryModel() {
                 RootDir = rootDir,
-                SubDirectories = _direcotryAnalyzer.GetSubDirectories(rootDir)
+                SubDirectories = _direcotryAnalyzer.GetSubDirectories(rootDir),
+                Files = _direcotryAnalyzer.GetFiles(rootDir)
             };
 
             return View(viewModel);
