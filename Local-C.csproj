@@ -207,4 +207,11 @@
     <None Include="node_modules\bootstrap\scss\_variables.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MimeTypes" Version="2.2.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

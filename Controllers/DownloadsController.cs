@@ -31,7 +31,8 @@ namespace Local_C.Controllers {
                 }
 
                 var fileBytes = await System.IO.File.ReadAllBytesAsync(fileFullName);
-                return File(fileBytes, "application/pdf");
+                var mimeType = MimeTypes.GetMimeType(fileFullName);
+                return File(fileBytes, mimeType);
             }
 
             return NotFound();
