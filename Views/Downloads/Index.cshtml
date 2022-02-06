@@ -1,11 +1,11 @@
-﻿@model Local_C.Models.DownloadDirectoryModel
+﻿@model Local_C.Models.DirectoryModel
 
-<h3>Root folder: @Model.RootDir</h3>
+<h3>@Model.Name</h3>
 
 <table>
     <tr>
         <th>Number</th>
-        <th>Dir</th>
+        <th>Name</th>
     </tr>
     @{
         int i = 0;
@@ -13,25 +13,28 @@
             i++;
             <tr>
                 <td>@i</td>
-                <td><a href="/Downloads/Serve?dir=@dir">@dir</a></td>
+                <td><a href="/Downloads/Serve?fullName=@dir.Path&Type=@dir.Type">@dir.Name</a></td>
             </tr>
         }
     }
 </table>
-<hr />
-<table>
-    <tr>
-        <th>Number</th>
-        <th>Name</th>
-    </tr>
-    @{
-        int j = 0;
-        foreach(var file in Model.Files) {
-            j++;
-            <tr>
-                <td>@j</td>
-                <td><a href="/Downloads/Serve?file=@file">@file</a></td>
-            </tr>
+
+@if(Model.Files?.Any() == true) {
+    <hr />
+    <table>
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+        </tr>
+        @{
+            int j = 0;
+            foreach(var file in Model.Files) {
+                j++;
+                <tr>
+                    <td>@j</td>
+                    <td><a href="/Downloads/Serve?fullName=@file.Path&Type=@file.Type">@file.Name</a></td>
+                </tr>
+            }
         }
-    }
-</table>
+    </table>
+}

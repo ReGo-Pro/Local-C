@@ -4,7 +4,6 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IDirectoryAnalyzer>(x => new DirectoryAnalizer(builder.Configuration.GetSection("RootDir").Value));
 
 var app = builder.Build();
 
